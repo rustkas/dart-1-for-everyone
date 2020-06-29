@@ -1,7 +1,16 @@
 import 'dart:collection';
 
 class ComicsCollection<String> extends IterableBase<String> {
-  List<String> models = List<String>.from(['Sandman', 'V for Vendetta']);
+  List<String> models = <String>[
+    'Sandman' as String,
+    'V for Vendetta' as String
+  ];
+
+  @override
+  String join([sep='']) {
+    return models.join(sep);
+  }
+   
 
   @override
   int get length => models.length;
@@ -45,11 +54,6 @@ class ComicsCollection<String> extends IterableBase<String> {
   Iterable<String> take(n) => models.take(n);
   @override
   Iterable<String> takeWhile(fn) => models.takeWhile(fn);
-//  @override
-// String join([sep='']) => models.join(sep);
-
-  @override
-  String join([sep = '']) => models.join(sep) as String;
 
   @override
   Iterable<String> where(fn) => models.where(fn);
