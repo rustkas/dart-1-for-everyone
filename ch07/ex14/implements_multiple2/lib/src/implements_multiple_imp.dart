@@ -1,9 +1,12 @@
-import 'dart:collection';
+class ComicsCollection implements Iterable<String>, EventTarget {
+  
+  // EventTarget
+  Events get on => _on;
 
-class ComicsCollection extends IterableBase<String> {
-  List<String> models = <String>['Sandman', 'V for Vendetta'];
+  var models = ['Sandman', 'V for Vendetta'];
+  final _on = Events();
 
-  @override
+@override
   String join([String sep = '']) => models.join(sep);
   @override
   int get length => models.length;
@@ -67,4 +70,24 @@ class ComicsCollection extends IterableBase<String> {
       models.firstWhere(fn, orElse: orElse);
   @override
   String get first => models.first;
+
+  @override
+  Iterable<R> cast<R>() {
+    
+    throw UnimplementedError();
+  }
+
+  @override
+  Iterable<String> followedBy(Iterable<String> other) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Iterable<T> whereType<T>() {
+    throw UnimplementedError();
+  }
+
 }
+
+class EventTarget {}
+class Events {}
